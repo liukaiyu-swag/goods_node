@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<style>
+		.container{
+			margin-top: 20px;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<a href="/">返回</a>
+			<form action="/users/save" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="exampleInputEmail1">商品名称</label>
+					<input type="text" class="form-control" placeholder="商品名称" name="name">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">商品价格</label>
+					<input type="number" class="form-control" placeholder="价格" name="price">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">商品库存</label>
+					<input type="number" class="form-control" placeholder="库存" name="stock">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputFile">上传图片</label>
+					<input type="file" id="exampleInputFile" name="pic">
+					<p id="tishi" class="help-block"></p>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputFile">商品描述</label>
+					<textarea class="form-control" rows="3" name="info" style="resize: none;"></textarea>
+				</div>
+				<button type="submit" class="btn btn-default">提交</button>
+			</form>
+		</div>
+	</body>
+	<script>
+		console.log(document.querySelector("[type='submit']"));
+		document.querySelector("[type='submit']").onclick=function(e){
+			console.log(document.querySelector('[name="pic"]').value);
+			if(/(.jpg)|(.jpeg)|(.png)$/.test(document.querySelector('[name="pic"]').value)){
+				return true;
+			}else{
+				document.querySelector("#tishi").innerHTML="文件选择错误";
+				return false;
+			}
+		}.bind(this)
+		console.log(/(.jpg)|(.jpeg)|(.png)$/.test("C:\fakepath\1f3.jpg"));
+	</script>
+</html>
